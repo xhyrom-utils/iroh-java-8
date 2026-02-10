@@ -1,6 +1,15 @@
 package link.e4mc.iroh;
 
-record CallbackResolve<T>(Resolvable<T> future, DeferredInitializer<T> value) implements Runnable {
+public class CallbackResolve<T> implements Runnable {
+
+    private final Resolvable<T> future;
+    private final DeferredInitializer<T> value;
+
+    public CallbackResolve(Resolvable<T> future, DeferredInitializer<T> value) {
+        this.future = future;
+        this.value = value;
+    }
+
     @Override
     public void run() {
         T resolved;
